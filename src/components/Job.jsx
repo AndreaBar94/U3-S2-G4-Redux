@@ -12,9 +12,9 @@ const Job = ({ data }) => {
       >
         <Col xs={3}>
           <Link to={`/${data.company_name}`}>{data.company_name}</Link>
-          <Button onClick={(()=>{
+          <Button onClick={()=>{
             dispatch({ type: 'ADD_TO_FAVOURITES', payload: data})
-          })}>Add to favourites</Button>
+          }}>Add to favourites</Button>
         </Col>
         <Col xs={9}>
           <a href={data.url} target="_blank" rel="noreferrer">
