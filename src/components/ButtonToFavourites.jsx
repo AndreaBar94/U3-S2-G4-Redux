@@ -8,7 +8,7 @@ const ButtonToFavourites = () => {
     <Link to={"/favourites"}>
       <Button variant="success" onClick={() => navigate("/favourites")}>
         Fav
-      </Button>
+      </Button> 
     </Link>
   );
 };
