@@ -1,5 +1,6 @@
 import { ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const FavouritesPage = () => {
     const favourites = useSelector((state) => state.favourites.content)
@@ -9,7 +10,8 @@ const FavouritesPage = () => {
             (favourites.map((favourite)=> 
                 
                     <ListGroup.Item key={favourite._id}>
-                            <span>{favourite.title}</span>
+                            <Link to={`/${favourite.url}`}>{favourite.company_name}</Link>
+                            <span className="mx-3">{favourite.title}</span>
                     </ListGroup.Item>
                 
             ))
