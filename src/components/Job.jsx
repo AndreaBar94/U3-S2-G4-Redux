@@ -1,10 +1,10 @@
 import { Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 
 const Job = ({ data }) => {
   const dispatch = useDispatch()
-  const favourites = useSelector(state => state.favourites.content)
+
 
   return(
         <Row
@@ -14,7 +14,7 @@ const Job = ({ data }) => {
         <Col xs={3}>
           <Link to={`/${data.company_name}`}>{data.company_name}</Link>
           <Button onClick={(()=>{
-            dispatch({ type: 'ADD_TO_FAVOURITES', payload: favourites})
+            dispatch({ type: 'ADD_TO_FAVOURITES', payload: data})
           })}>Add to favourites</Button>
         </Col>
         <Col xs={9}>
