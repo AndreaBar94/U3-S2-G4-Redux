@@ -1,10 +1,9 @@
 import { Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 const Job = ({ data }) => {
   const dispatch = useDispatch()
-
 
   return(
         <Row

@@ -1,7 +1,7 @@
 import { ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
-const Favourites = () => {
+const FavouritesPage = () => {
     const favourites = useSelector((state) => state.favourites.content)
     return(
         <ListGroup>
@@ -9,7 +9,7 @@ const Favourites = () => {
             (favourites.map((favourite)=> 
                 
                     <ListGroup.Item key={favourite._id}>
-                            <span>{favourite.company_name}</span>
+                            <span>{favourite.title}</span>
                     </ListGroup.Item>
                 
             ))
@@ -20,4 +20,4 @@ const Favourites = () => {
     )
 };
 
-export default Favourites;
+export default FavouritesPage;
