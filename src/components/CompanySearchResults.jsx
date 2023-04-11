@@ -7,7 +7,7 @@ import {searchCompany} from '../redux/actions'
 const CompanySearchResults = () => {
   const jobs = useSelector(state => state.companySearch.content)
   searchCompany();
-  
+
   return (
     <Container>
       <Row>
