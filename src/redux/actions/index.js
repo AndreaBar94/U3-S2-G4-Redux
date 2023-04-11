@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 export const ADD_TO_FAVOURITES = "ADD_TO_FAVOURITES";
@@ -27,12 +27,12 @@ export const searchAction = (dispatch, query) => {
 	};
 };
 
-export const searchCompany = () => {
+export const searchCompany = (companyName) => {
 	return async () => {
-		const params = useParams();
+		// const params = useParams();
 		const dispatch = useDispatch();
 		try {
-			const response = await fetch(baseEndpoint2 + params.companyName);
+			const response = await fetch(baseEndpoint2 + companyName);
 			if (response.ok) {
 				const data = await response.json();
 				dispatch({ type: SEARCH, payload: data });

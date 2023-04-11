@@ -6,7 +6,7 @@ import { DELETE_FROM_FAVOURITES } from "../redux/actions";
 const FavouritesPage = () => {
     const favourites = useSelector((state) => state.favourites.content)
     const dispatch = useDispatch()
-
+    
     return(
         <ListGroup>
             {favourites.length > 0 &&
