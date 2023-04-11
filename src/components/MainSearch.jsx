@@ -2,31 +2,16 @@ import { useState } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import Job from './Job'
 import ButtonToFavourites from './ButtonToFavourites'
+import { useDispatch, useSelector } from 'react-redux'
+import {searchAction} from '../redux/actions'
 
 const MainSearch = () => {
   const [query, setQuery] = useState('')
-  const [jobs, setJobs] = useState([])
-
-  const baseEndpoint = 'https://strive-benchmark.herokuapp.com/api/jobs?search='
+  const dispatch = useDispatch();
+  const jobs = useSelector(state => state.search.content)
 
   const handleChange = (e) => {
     setQuery(e.target.value)
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
-    try {
-      const response = await fetch(baseEndpoint + query + '&limit=20')
-      if (response.ok) {
-        const { data } = await response.json()
-        setJobs(data)
-      } else {
-        alert('Error fetching results')
-      }
-    } catch (error) {
-      console.log(error)
-    }
   }
 
   return (
@@ -37,7 +22,7 @@ const MainSearch = () => {
           <ButtonToFavourites>To Fav</ButtonToFavourites>
         </Col>
         <Col xs={10} className="mx-auto">
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={searchAction(dispatch, query)}>
             <Form.Control
               type="search"
               value={query}
