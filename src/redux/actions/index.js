@@ -12,7 +12,6 @@ const baseEndpoint2 = "https://strive-benchmark.herokuapp.com/api/jobs?company="
 export const searchAction = (dispatch, query) => {
 	return async (e) => {
 		e.preventDefault();
-
 		try {
 			const response = await fetch(baseEndpoint + query + "&limit=20");
 			if (response.ok) {
@@ -27,14 +26,13 @@ export const searchAction = (dispatch, query) => {
 	};
 };
 
-export const searchCompany = (companyName) => {
-	return async () => {
-		// const params = useParams();
-		const dispatch = useDispatch();
+export const searchCompanyAction = (companyName) => {
+	return async (dispatch) => {
 		try {
 			const response = await fetch(baseEndpoint2 + companyName);
 			if (response.ok) {
-				const data = await response.json();
+				const { data } = await response.json();
+				console.log(data);
 				dispatch({ type: SEARCH, payload: data });
 			} else {
 				alert("Error fetching results");

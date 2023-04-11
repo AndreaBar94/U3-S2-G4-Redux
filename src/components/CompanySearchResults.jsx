@@ -1,15 +1,24 @@
 // import { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Job from './Job'
-import { useSelector } from 'react-redux'
-import {searchCompany} from '../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import {searchCompanyAction} from '../redux/actions'
 import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const CompanySearchResults = () => {
   const jobs = useSelector(state => state.companySearch.content)
   const params = useParams();
-  searchCompany(params.companyName);
-  console.log(jobs)
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(searchCompanyAction(params.companyName));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  
+
+  console.log("test" + jobs)
+
   return (
     <Container>
       <Row>
